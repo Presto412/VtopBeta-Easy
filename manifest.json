@@ -1,0 +1,35 @@
+{
+  "update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 2,
+
+  "name": "VtopBeta Easy",
+  "description": "This extension simplifies your vtopbeta experience.",
+  "version": "2.1",
+  "author": "Priyansh Jain",
+  "permissions": [
+    "webRequest",
+    "downloads",
+    "cookies",
+    "*://vtopbeta.vit.ac.in/vtop/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [{
+    "matches": ["*://vtopbeta.vit.ac.in/vtop/",
+      "*://vtopbeta.vit.ac.in/vtop/parentLogin"
+    ],
+    "js": ["captchaparser.js"]
+  }, {
+    "matches": [
+      "*://vtopbeta.vit.ac.in/vtop/*"
+    ],
+    "js": [
+      "coursepage.js"
+    ]
+  }]
+}
